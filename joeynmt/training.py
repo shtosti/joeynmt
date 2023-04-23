@@ -570,11 +570,18 @@ class TrainManager:
         # reactivate training
         self.model.train()
 
-        with torch.autocast(device_type=self.device.type,
-                            dtype=self.dtype,
-                            enabled=self.fp16):
+        # This caused training errors with CPU. Experiment if you want to use GPU/cuda
+        #print(f"DEBUG:\n \
+        #      device type: \t{self.device.type} \
+        #      enabled or na?: \t{self.fp16} \
+        #      ")
+        #with torch.autocast(device_type=self.device.type,
+        #                    dtype=self.dtype,
+        #                    enabled=self.fp16):
             # get loss (run as during training with teacher forcing)
-            batch_loss, _, _, correct_tokens = self.model(return_type="loss",
+            #batch_loss, _, _, correct_tokens = self.model(return_type="loss",
+            #                                                 **vars(batch))
+        batch_loss, _, _, correct_tokens = self.model(return_type="loss",
                                                           **vars(batch))
 
         # normalize batch loss

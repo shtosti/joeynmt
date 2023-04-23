@@ -307,8 +307,15 @@ class SubwordNMTTokenizer(BasicTokenizer):
         self.bpe.vocab = vocab
 
     def copy_cfg_file(self, model_dir: Path) -> None:
-        """Copy config file to model_dir"""
-        shutil.copy2(self.codes, (model_dir / self.codes.name).as_posix())
+        """this does nothing at the moment, uncommenting the original leads to training error"""
+        useless = "do nothing"
+    #def copy_cfg_file(self, model_dir: Path) -> None:
+    #    """Copy config file to model_dir"""
+    #    print(f"DEBUG: \n self.codes: \t{self.codes}\n \
+    #          self.codes.name:\t{self.codes.name}\nmodel_dir:\t{model_dir}\n \
+    #          the other thing:\t{(model_dir / self.codes.name).as_posix()}")
+    #    shutil.copy2(self.codes, (model_dir / self.codes.name).as_posix())
+
 
     def __repr__(self):
         return (f"{self.__class__.__name__}(level={self.level}, "

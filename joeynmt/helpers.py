@@ -326,7 +326,8 @@ def parse_test_args(cfg: Dict) -> Tuple:
 
     # batch options
     batch_size: int = cfg.get("batch_size", 64)
-    batch_type: str = cfg.get("batch_type", "sentences")
+    batch_type: str = cfg.get("batch_type", "sentence")
+    print(batch_type)
     if batch_type not in ["sentence", "token"]:
         raise ConfigurationError(
             "Invalid `batch_type` option. Valid options: {`sentence`, `token`}.")
