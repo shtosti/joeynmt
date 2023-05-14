@@ -122,7 +122,8 @@ class PositionwiseFeedForward(nn.Module):
         ff_size: int,
         dropout: float = 0.1,
         alpha: float = 1.0,
-        layer_norm: str = "post",
+#         layer_norm: str = "post",
+        layer_norm: str = "pre"
         activation: str = "relu",
     ) -> None:
         """
